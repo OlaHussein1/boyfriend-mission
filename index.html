@@ -103,13 +103,11 @@
 
         .crosshair {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 40px;
             height: 40px;
             pointer-events: none;
             z-index: 999;
+            transform: translate(-50%, -50%);
         }
 
         .crosshair::before,
@@ -636,6 +634,13 @@
                 health.style.width = '100%';
             }
         }, 100);
+
+        // Make crosshair follow mouse
+        document.addEventListener('mousemove', (e) => {
+            const crosshair = document.querySelector('.crosshair');
+            crosshair.style.left = e.clientX + 'px';
+            crosshair.style.top = e.clientY + 'px';
+        });
     </script>
 </body>
 </html>
